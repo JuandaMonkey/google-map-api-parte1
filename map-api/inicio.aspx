@@ -77,13 +77,42 @@
                                 <div id="ModalMapPreview" style="width:100%; height:400px"></div>
                                 <div class="clearfix">&nbsp;</div>
 
+                                <!-- para guardar la latitud y longitud -->
+                                <div class="m-t-small">
+
+                                    <!-- latitud -->
+                                    <label class="p-r-small col-sm-1 control-label">Latitud: </label>
+                                    <div class="col-sm-3">
+                                        <asp:TextBox ID="ModalMapLat" CssClass="form-control" runat="server"></asp:TextBox>
+                                    </div>
+
+                                    <!-- longitud -->
+                                    <label class="p-r-small col-sm-1 control-label">Latitud: </label>
+                                    <div class="col-sm-3">
+                                        <asp:TextBox ID="ModalMapLong" CssClass="form-control" runat="server"></asp:TextBox>
+                                    </div>
+
+                                    <div class="col-sm-3">
+                                        <button type="button" class="btn btn-primary btn-block" data-dismiss="modal">Aceptar</button>
+                                    </div>
+
+                                    <div class="clearfix"></div>
+
+                                </div>
+
                                 <script>
                                     /* muestra el mapa */
                                     $('#ModalMapPreview').locationpicker({
 
                                         /* buscador */
                                         inputBinding: {
+                                            latitudeInput: $('#<%=ModalMapLat.ClientID%>'),
+                                            longitudeInput: $('#<%=ModalMapLong.ClientID%>'),
                                             locationNameInput: $('#<%=ModalMapaddress.ClientID%>')
+                                        },
+                                        /* guarda la ultima ubicación marcada */
+                                        onchanged: function (currentLocation, radius, isMarkerDropped) {
+                                            $('#ubicacion').html($('#<%=ModalMapaddress.ClientID%>').val());
                                         }
 
                                     }); 

@@ -16,7 +16,7 @@
             /* mapa donde se coloca el marcador */
             map: _map,
             /* texto del marcador */
-            title: "Obre York",
+            title: "Ubicación",
             /* visibilidad de marcador */
             visible: options.markerVisible,
             /* arrastre del marcador */
